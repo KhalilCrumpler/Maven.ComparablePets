@@ -1,6 +1,8 @@
 package io.zipcoder;
 
-public class Pet implements Comparable<Pet> {
+import java.util.Comparator;
+
+public class Pet implements Comparable<Pet>, Comparator<Pet> {
     private String name;
     public Pet(){
 
@@ -31,5 +33,15 @@ public class Pet implements Comparable<Pet> {
     @Override
     public String toString() {
         return this.getName();
+    }
+
+    @Override
+    public int compare(Pet pet1, Pet pet2) {
+        if(pet1.getClass() == pet2.getClass()){
+            return pet1.getName().compareTo(pet2.getName());
+        }
+        else{
+            return pet1.getClass().toString().compareTo(pet2.getClass().toString());
+        }
     }
 }
